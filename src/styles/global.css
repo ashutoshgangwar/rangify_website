@@ -1,0 +1,94 @@
+/* Global Styles for Rangify Technology */
+
+:root {
+  --primary: #4F46E5;
+  --secondary: #0EA5E9;
+  --background: #0F172A;
+  --glass-bg: rgba(15, 23, 42, 0.7);
+  --card-bg: rgba(31, 41, 55, 0.7);
+  --text: #F1F5F9;
+  --muted: #94A3B8;
+  --radius: 18px;
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
+}
+
+.container {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0F172A 0%, #4F46E5 100%);
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #232946;
+  border-radius: 8px;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--glass-bg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Utility classes */
+.container {
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .container {
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}

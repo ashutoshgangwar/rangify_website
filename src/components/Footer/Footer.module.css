@@ -1,0 +1,93 @@
+/* Footer.module.css */
+
+.footer {
+  width: 100%;
+  background: var(--glass-bg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 2.5rem 0 1.5rem 0;
+  margin-top: 3rem;
+}
+
+.footerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+
+.companyInfo {
+  flex: 1 1 250px;
+}
+.companyInfo h2 {
+  color: var(--primary);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.companyInfo p {
+  color: var(--muted);
+  margin: 0.2rem 0;
+}
+
+.quickLinks {
+  flex: 1 1 180px;
+}
+.quickLinks h4 {
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+.quickLinks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.quickLinks li {
+  margin-bottom: 0.3rem;
+}
+.quickLinks a {
+  color: var(--text);
+  transition: color 0.2s;
+}
+.quickLinks a:hover {
+  color: var(--secondary);
+}
+
+.socials {
+  flex: 1 1 180px;
+}
+.socials h4 {
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+.icons {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+.icon {
+  color: var(--text);
+  transition: color 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+}
+.icon:hover {
+  color: var(--primary);
+  transform: scale(1.15);
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.7rem;
+}
+
+@media (max-width: 900px) {
+  .footerContainer {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+}

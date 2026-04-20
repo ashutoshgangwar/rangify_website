@@ -1,0 +1,59 @@
+/* CTASection.module.css */
+
+.cta {
+  padding: 3.5rem 0 3.5rem 0;
+  background: none;
+}
+.ctaBox {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2.5rem 2rem 2.5rem 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1.5px solid rgba(255,255,255,0.07);
+}
+.ctaBox h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.1rem;
+}
+.ctaBox p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+.ctaBtn {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(15,23,42,0.18);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px 0 var(--secondary);
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+  text-decoration: none;
+}
+.ctaBtn:hover {
+  background: #fff;
+  color: var(--primary);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 32px 0 var(--primary);
+}
+@media (max-width: 900px) {
+  .ctaBox h2 {
+    font-size: 1.4rem;
+  }
+  .ctaBox p {
+    font-size: 1rem;
+  }
+  .ctaBtn {
+    padding: 0.7rem 1.3rem;
+    font-size: 1rem;
+  }
+}
