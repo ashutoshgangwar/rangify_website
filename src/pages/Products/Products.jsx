@@ -27,7 +27,7 @@ const Products = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        Our Products
+        Our Products & Solutions
       </motion.h1>
       <div className={styles.cardsGrid}>
         {products.map((product, idx) => (
