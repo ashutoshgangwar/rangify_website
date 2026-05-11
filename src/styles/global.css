@@ -10,6 +10,7 @@
   --muted: #94A3B8;
   --radius: 18px;
   --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --navbar-height: 70px;
 }
 
 html, body, #root {
@@ -74,16 +75,25 @@ a:hover {
 /* Utility classes */
 .container {
   width: 100%;
-  max-width: 100vw;
   box-sizing: border-box;
   overflow-x: hidden;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --navbar-height: 64px;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
 }
 
 @media (max-width: 600px) {
   .container {
-    padding: 0 0.5rem;
+    padding: 0 0.85rem;
   }
 }

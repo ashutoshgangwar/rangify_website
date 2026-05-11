@@ -17,6 +17,8 @@
   z-index: 2;
   text-align: center;
   padding: 5rem 0 3rem 0;
+  max-width: 840px;
+  margin: 0 auto;
 }
 
 .heading {
@@ -76,11 +78,20 @@
   }
 }
 @media (max-width: 600px) {
+  .hero {
+    min-height: 62vh;
+  }
+
+  .heroContent {
+    padding: 2.8rem 0 1.5rem;
+  }
+
   .heading {
     font-size: 1.4rem;
   }
   .subheading {
     font-size: 1rem;
+    margin-bottom: 1.4rem;
   }
   .ctaBtn {
     padding: 0.7rem 1.3rem;

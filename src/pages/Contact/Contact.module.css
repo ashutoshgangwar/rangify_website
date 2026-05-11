@@ -1,82 +1,184 @@
 /* Contact.module.css */
 
 .contact {
-  padding: 5rem 0 3rem 0;
-  min-height: 70vh;
+  padding: 4.5rem 0 3rem;
+  min-height: 72vh;
 }
-.heading {
-  text-align: center;
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 2.5rem;
-}
-.form {
-  max-width: 480px;
+
+.formCard {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 860px;
   margin: 0 auto;
   background: var(--card-bg);
-  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0;
   box-shadow: var(--shadow);
-  padding: 2.5rem 2rem 2rem 2rem;
-  border: 1.5px solid rgba(255,255,255,0.07);
-  backdrop-filter: blur(10px) saturate(180%);
-  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  padding: 2.2rem 2.3rem 2rem;
 }
+
+.heading {
+  text-align: left;
+  font-size: 2.05rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 1.35rem;
+}
+
+.form {
+  width: 100%;
+  margin: 0;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.formGrid > * {
+  min-width: 0;
+}
+
 .formGroup {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.35rem;
 }
-label {
+
+.formGroup label {
   color: var(--text);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+  font-size: 0.98rem;
 }
-input, textarea {
-  background: rgba(15,23,42,0.18);
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  min-width: 0;
+  background: transparent;
   color: var(--text);
-  border: 1.5px solid rgba(255,255,255,0.13);
-  border-radius: 8px;
-  padding: 0.8rem 1rem;
+  border: none;
+  border-bottom: 2px solid rgba(255,255,255,0.5);
+  border-radius: 0;
+  padding: 0.75rem 0.1rem 0.55rem;
   font-size: 1rem;
   font-family: inherit;
   outline: none;
-  transition: border 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s ease;
   resize: none;
 }
-input:focus, textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2px var(--primary)33;
+
+.phoneRow {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 0.8rem;
+  align-items: end;
 }
+
+.countryCode {
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  border-bottom: 2px solid rgba(255,255,255,0.5);
+  border-radius: 0;
+  padding: 0.75rem 0.1rem 0.55rem;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.countryCode:focus {
+  border-bottom-color: var(--text);
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-bottom-color: var(--text);
+}
+
 .errorInput {
-  border-color: #e53e3e !important;
+  border-bottom-color: #e53e3e !important;
 }
+
 .errorMsg {
   color: #e53e3e;
-  font-size: 0.95rem;
+  font-size: 0.84rem;
   margin-top: 0.3rem;
 }
+
 .successMsg {
   color: #22c55e;
-  font-size: 1.1rem;
-  margin-top: 1.2rem;
-  text-align: center;
+  font-size: 0.95rem;
+  margin-top: 0.85rem;
 }
+
 .submitBtn {
-  width: 100%;
-  padding: 0.9rem 0;
-  font-size: 1.1rem;
+  width: auto;
+  min-width: 160px;
+  padding: 0.72rem 1.7rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background: var(--primary);
   border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px 0 var(--primary);
+  border-radius: 999px;
+  box-shadow: 0 5px 16px color-mix(in oklab, var(--primary) 55%, transparent);
   cursor: pointer;
-  transition: transform 0.18s, box-shadow 0.18s;
-  margin-top: 0.5rem;
+  transition: transform 0.18s, box-shadow 0.18s, filter 0.18s, background-color 0.18s;
+  margin-top: 0.2rem;
 }
+
 .submitBtn:hover {
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 8px 32px 0 var(--secondary);
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+  box-shadow: 0 8px 20px color-mix(in oklab, var(--primary) 65%, transparent);
+}
+
+@media (max-width: 900px) {
+  .contact {
+    padding: 3.8rem 0 2.5rem;
+  }
+
+  .formCard {
+    padding: 1.8rem 1.4rem 1.6rem;
+  }
+
+  .heading {
+    font-size: 1.7rem;
+    margin-bottom: 1.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .formCard {
+    width: calc(100% - 0.7rem);
+    padding: 1.4rem 1rem 1.25rem;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+
+  .formGroup {
+    margin-bottom: 1rem;
+  }
+
+  .submitBtn {
+    width: 100%;
+    min-width: 0;
+    font-size: 0.98rem;
+    padding: 0.78rem 1rem;
+  }
+
+  .phoneRow {
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 0.65rem;
+  }
 }

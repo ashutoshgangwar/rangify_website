@@ -54,4 +54,24 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+
+  .testimonials {
+    padding: 3.2rem 0 2.5rem;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+    margin-bottom: 1.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 1.5rem 1rem 1.15rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
 }

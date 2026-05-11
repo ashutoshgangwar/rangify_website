@@ -46,6 +46,14 @@
   box-shadow: 0 8px 32px 0 var(--primary);
 }
 @media (max-width: 900px) {
+  .cta {
+    padding: 3rem 0;
+  }
+
+  .ctaBox {
+    padding: 2rem 1.25rem;
+  }
+
   .ctaBox h2 {
     font-size: 1.4rem;
   }
@@ -55,5 +63,15 @@
   .ctaBtn {
     padding: 0.7rem 1.3rem;
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .ctaBox h2 {
+    font-size: 1.2rem;
+  }
+
+  .ctaBox p {
+    margin-bottom: 1.3rem;
   }
 }

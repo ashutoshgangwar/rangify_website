@@ -22,30 +22,32 @@ const testimonials = [
 
 const Testimonials = () => (
   <section className={styles.testimonials}>
-    <motion.h2
-      className={styles.heading}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-    >
-      What Our Clients Say
-    </motion.h2>
-    <div className={styles.cardsGrid}>
-      {testimonials.map((t, idx) => (
-        <motion.div
-          className={styles.card}
-          key={t.name}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: idx * 0.15 }}
-        >
-          <p className={styles.text}>&ldquo;{t.text}&rdquo;</p>
-          <div className={styles.author}>{t.name}</div>
-          <div className={styles.role}>{t.role}</div>
-        </motion.div>
-      ))}
+    <div className="container">
+      <motion.h2
+        className={styles.heading}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        What Our Clients Say
+      </motion.h2>
+      <div className={styles.cardsGrid}>
+        {testimonials.map((t, idx) => (
+          <motion.div
+            className={styles.card}
+            key={t.name}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: idx * 0.15 }}
+          >
+            <p className={styles.text}>&ldquo;{t.text}&rdquo;</p>
+            <div className={styles.author}>{t.name}</div>
+            <div className={styles.role}>{t.role}</div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   </section>
 );

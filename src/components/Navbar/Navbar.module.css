@@ -10,22 +10,25 @@
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
   border-bottom: 1px solid rgba(255,255,255,0.06);
+  isolation: isolate;
 }
 
 .navContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  height: var(--navbar-height);
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--primary);
-  text-shadow: 0 2px 16px rgba(79,70,229,0.12);
-  user-select: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 56px;
+  width: auto;
+  display: block;
 }
 .tech {
   color: var(--secondary);
@@ -59,17 +62,30 @@
 .hamburger {
   display: none;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
   cursor: pointer;
   z-index: 120;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  touch-action: manipulation;
 }
 .hamburger span {
   display: block;
-  width: 28px;
+  width: 22px;
   height: 3px;
   background: var(--primary);
   border-radius: 2px;
   transition: all 0.3s;
+}
+
+.hamburgerOpen span {
+  background: #fff;
 }
 .barOpen:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
@@ -83,42 +99,94 @@
 
 .mobileMenu {
   position: fixed;
-  top: 70px;
-  right: 0;
-  width: 70vw;
-  max-width: 320px;
-  height: calc(100vh - 70px);
-  background: var(--glass-bg);
-  box-shadow: var(--shadow);
+  top: var(--navbar-height);
+  left: 0;
+  width: min(78vw, 320px);
+  height: calc(100dvh - var(--navbar-height));
+  background: linear-gradient(180deg, #0b4f73 0%, #084966 100%);
+  box-shadow: 18px 0 40px rgba(2, 6, 23, 0.45);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 2.5rem 2rem;
+  overflow-y: auto;
+  padding: 0 calc(env(safe-area-inset-right) + 0px) calc(1rem + env(safe-area-inset-bottom)) 0;
   z-index: 110;
-  border-radius: 18px 0 0 18px;
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.mobileBackdrop {
+  position: fixed;
+  inset: 0;
+  border: none;
+  background: rgba(2, 6, 23, 0.56);
+  z-index: 105;
 }
 
 .mobileNavLink {
-  color: var(--text);
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding: 0.7rem 1rem;
-  border-radius: 8px;
-  transition: background 0.2s, color 0.2s;
+  color: #f8fafc;
+  font-size: 1rem;
+  font-weight: 600;
+  min-height: 58px;
+  width: 100%;
+  padding: 0 1rem;
+  background: rgba(0, 0, 0, 0.06);
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(2, 6, 23, 0.28);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .mobileNavLink:hover {
-  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.mobileActive {
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
 }
 
 @media (max-width: 900px) {
+  .navbar {
+    background: linear-gradient(90deg, rgba(79, 70, 229, 0.96), rgba(14, 165, 233, 0.9));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 10px 28px rgba(14, 165, 233, 0.18);
+  }
+
   .desktopMenu {
     display: none;
   }
   .hamburger {
     display: flex;
+  }
+
+  .logoImage {
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileMenu {
+    width: min(82vw, 300px);
+  }
+
+  .mobileNavLink {
+    min-height: 56px;
+    font-size: 0.98rem;
+    padding-inline: 0.9rem;
+  }
+
+  .logoImage {
+    height: 44px;
   }
 }

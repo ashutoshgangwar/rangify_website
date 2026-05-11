@@ -19,29 +19,31 @@ const features = [
 
 const WhyChooseUs = () => (
   <section className={styles.why}>
-    <motion.h2
-      className={styles.heading}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-    >
-      Why Choose Us
-    </motion.h2>
-    <div className={styles.featuresGrid}>
-      {features.map((feature, idx) => (
-        <motion.div
-          className={styles.feature}
-          key={feature.title}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: idx * 0.15 }}
-        >
-          <h3>{feature.title}</h3>
-          <p>{feature.desc}</p>
-        </motion.div>
-      ))}
+    <div className="container">
+      <motion.h2
+        className={styles.heading}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        Why Choose Us
+      </motion.h2>
+      <div className={styles.featuresGrid}>
+        {features.map((feature, idx) => (
+          <motion.div
+            className={styles.feature}
+            key={feature.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: idx * 0.15 }}
+          >
+            <h3>{feature.title}</h3>
+            <p>{feature.desc}</p>
+          </motion.div>
+        ))}
+      </div>
     </div>
   </section>
 );

@@ -22,30 +22,32 @@ const services = [
 
 const ServicesSection = () => (
   <section className={styles.services} id="services">
-    <motion.h2
-      className={styles.heading}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-    >
-      Our Services
-    </motion.h2>
-    <div className={styles.cardsGrid}>
-      {services.map((service, idx) => (
-        <motion.div
-          className={styles.card}
-          key={service.title}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: idx * 0.15 }}
-        >
-          <div className={styles.icon}>{service.icon}</div>
-          <h3>{service.title}</h3>
-          <p>{service.desc}</p>
-        </motion.div>
-      ))}
+    <div className="container">
+      <motion.h2
+        className={styles.heading}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        Our Services
+      </motion.h2>
+      <div className={styles.cardsGrid}>
+        {services.map((service, idx) => (
+          <motion.div
+            className={styles.card}
+            key={service.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: idx * 0.15 }}
+          >
+            <div className={styles.icon}>{service.icon}</div>
+            <h3>{service.title}</h3>
+            <p>{service.desc}</p>
+          </motion.div>
+        ))}
+      </div>
     </div>
   </section>
 );
