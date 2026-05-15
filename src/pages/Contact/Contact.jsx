@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 import styles from './Contact.module.css';
 
-const initialState = { firstName: '', lastName: '', email: '', countryCode: '+1', phone: '', message: '' };
+const initialState = { firstName: '', lastName: '', email: '', countryCode: '+91', phone: '', message: '' };
 
 const Contact = () => {
   const [form, setForm] = useState(initialState);
@@ -47,107 +47,113 @@ const Contact = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className={styles.formCard}
+          className={styles.contactWrapper}
         >
-          <h1 className={styles.heading}>Contact</h1>
-          <form className={styles.form} onSubmit={handleSubmit} noValidate>
-            <div className={styles.formGrid}>
-              <div className={styles.formGroup}>
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={form.firstName}
-                  onChange={handleChange}
-                  className={errors.firstName ? styles.errorInput : ''}
-                  autoComplete="off"
-                />
-                {errors.firstName && <span className={styles.errorMsg}>{errors.firstName}</span>}
-              </div>
+          <h1 className={styles.heading}>Get in Touch</h1>
 
-              <div className={styles.formGroup}>
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={form.lastName}
-                  onChange={handleChange}
-                  className={errors.lastName ? styles.errorInput : ''}
-                  autoComplete="off"
-                />
-                {errors.lastName && <span className={styles.errorMsg}>{errors.lastName}</span>}
-              </div>
-            </div>
-
-            <div className={styles.formGrid}>
-            
-              <div className={styles.formGroup}>
-                <label htmlFor="phone">Contact Number</label>
-                <div className={styles.phoneRow}>
-                  <select
-                    id="countryCode"
-                    name="countryCode"
-                    value={form.countryCode}
-                    onChange={handleChange}
-                    className={styles.countryCode}
-                    aria-label="Country code"
-                  >
-                    <option value="+1">+1</option>
-                    <option value="+91">+91</option>
-                    <option value="+44">+44</option>
-                    <option value="+61">+61</option>
-                    <option value="+971">+971</option>
-                  </select>
+          <div className={styles.formSection}>
+            <form className={styles.form} onSubmit={handleSubmit} noValidate>
+              <div className={styles.formGrid}>
+                <div className={styles.formGroup}>
+                  <label htmlFor="firstName">First Name</label>
                   <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={form.phone}
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={form.firstName}
                     onChange={handleChange}
-                    className={errors.phone ? styles.errorInput : ''}
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                    maxLength={15}
+                    className={errors.firstName ? styles.errorInput : ''}
                     autoComplete="off"
+                    placeholder="First Name"
                   />
+                  {errors.firstName && <span className={styles.errorMsg}>{errors.firstName}</span>}
                 </div>
-                {errors.phone && <span className={styles.errorMsg}>{errors.phone}</span>}
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="lastName">Last Name</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={form.lastName}
+                    onChange={handleChange}
+                    className={errors.lastName ? styles.errorInput : ''}
+                    autoComplete="off"
+                    placeholder="Last Name"
+                  />
+                  {errors.lastName && <span className={styles.errorMsg}>{errors.lastName}</span>}
+                </div>
               </div>
 
-               <div className={styles.formGroup}>
-                <label htmlFor="email">Email <span aria-hidden="true">*</span></label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  className={errors.email ? styles.errorInput : ''}
-                  autoComplete="off"
-                />
-                {errors.email && <span className={styles.errorMsg}>{errors.email}</span>}
+              <div className={styles.formGrid}>
+                <div className={styles.formGroup}>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    className={errors.email ? styles.errorInput : ''}
+                    autoComplete="off"
+                    placeholder="john@example.com"
+                  />
+                  {errors.email && <span className={styles.errorMsg}>{errors.email}</span>}
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="phone">Contact Number</label>
+                  <div className={styles.phoneRow}>
+                    <select
+                      id="countryCode"
+                      name="countryCode"
+                      value={form.countryCode}
+                      onChange={handleChange}
+                      className={styles.countryCode}
+                      aria-label="Country code"
+                    >
+                      <option value="+91">+91</option>
+                      <option value="+1">+1</option>
+                      <option value="+44">+44</option>
+                      <option value="+61">+61</option>
+                      <option value="+971">+971</option>
+                    </select>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      className={errors.phone ? styles.errorInput : ''}
+                      inputMode="numeric"
+                      pattern="[0-9]*"
+                      maxLength={15}
+                      autoComplete="off"
+                      placeholder="1234567890"
+                    />
+                  </div>
+                  {errors.phone && <span className={styles.errorMsg}>{errors.phone}</span>}
+                </div>
               </div>
-            </div>
 
-            <div className={styles.formGroup}>
-              <label htmlFor="message">Tell us about your project</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                value={form.message}
-                onChange={handleChange}
-                className={errors.message ? styles.errorInput : ''}
-                placeholder="Share your requirements, timeline, and goals."
-              />
-              {errors.message && <span className={styles.errorMsg}>{errors.message}</span>}
-            </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="message">Tell us about your project</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    value={form.message}
+                    onChange={handleChange}
+                    className={errors.message ? styles.errorInput : ''}
+                    placeholder="Share your requirements, timeline, and goals..."
+                  />
+                  {errors.message && <span className={styles.errorMsg}>{errors.message}</span>}
+                </div>
 
-            <button type="submit" className={styles.submitBtn}>Submit</button>
-            {submitted && <div className={styles.successMsg}>Thank you! We will get back to you soon.</div>}
-          </form>
+                <button type="submit" className={styles.submitBtn}>Send Message</button>
+                {submitted && <div className={styles.successMsg}>✓ Thank you! We'll get back to you soon.</div>}
+              </form>
+            </div>
         </motion.div>
       </div>
     </section>

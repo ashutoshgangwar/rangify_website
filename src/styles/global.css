@@ -1,19 +1,61 @@
 /* Global Styles for Rangify Technology */
 
 :root {
-  --primary: #4F46E5;
-  --secondary: #0EA5E9;
-  --background: #0F172A;
-  --glass-bg: rgba(15, 23, 42, 0.7);
-  --card-bg: rgba(31, 41, 55, 0.7);
-  --text: #F1F5F9;
-  --muted: #94A3B8;
+  --primary: #4f46e5;
+  --secondary: #0ea5e9;
+  --primary-rgb: 79, 70, 229;
+  --secondary-rgb: 14, 165, 233;
+
+  --background: #0f172a;
+  --background-gradient: linear-gradient(135deg, #0f172a 0%, #4f46e5 100%);
+  --glass-bg: rgba(15, 23, 42, 0.72);
+  --card-bg: rgba(31, 41, 55, 0.72);
+
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  --surface-soft: rgba(255, 255, 255, 0.06);
+  --surface-soft-hover: rgba(255, 255, 255, 0.1);
+  --surface-border: rgba(255, 255, 255, 0.1);
+  --surface-border-strong: rgba(255, 255, 255, 0.16);
+  --overlay-bg: rgba(2, 6, 23, 0.56);
+  --mobile-menu-bg: linear-gradient(180deg, #0b4f73 0%, #084966 100%);
+
   --radius: 18px;
   --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   --navbar-height: 70px;
+  --scrollbar-thumb: #232946;
+
+  color-scheme: dark;
 }
 
-html, body, #root {
+:root[data-theme='light'] {
+  --background: #eef3ff;
+  --background-gradient: linear-gradient(135deg, #eef3ff 0%, #d8e7ff 55%, #f4f8ff 100%);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --card-bg: rgba(255, 255, 255, 0.86);
+
+  --text: #1f2937;
+  --muted: #4b5563;
+  --text-inverse: #ffffff;
+
+  --surface-soft: rgba(255, 255, 255, 0.72);
+  --surface-soft-hover: rgba(255, 255, 255, 0.95);
+  --surface-border: rgba(79, 70, 229, 0.16);
+  --surface-border-strong: rgba(79, 70, 229, 0.26);
+  --overlay-bg: rgba(15, 23, 42, 0.32);
+  --mobile-menu-bg: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+
+  --shadow: 0 8px 28px 0 rgba(79, 70, 229, 0.16);
+  --scrollbar-thumb: #c7d2fe;
+
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -24,14 +66,10 @@ html, body, #root {
   overflow-x: hidden !important;
 }
 
-.container {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0F172A 0%, #4F46E5 100%);
+  background: var(--background-gradient);
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 .app-root {
@@ -40,7 +78,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  
 }
 
 a {
@@ -57,22 +94,21 @@ a:hover {
   width: 8px;
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #232946;
+  background: var(--scrollbar-thumb);
   border-radius: 8px;
 }
 
-/* Glassmorphism utility */
 .glass {
   background: var(--glass-bg);
   box-shadow: var(--shadow);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--surface-border);
 }
 
-/* Utility classes */
 .container {
   width: 100%;
   box-sizing: border-box;
