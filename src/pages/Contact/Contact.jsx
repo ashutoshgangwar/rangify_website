@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Contact.module.css';
 
 const initialState = { firstName: '', lastName: '', email: '', countryCode: '+91', phone: '', message: '' };
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Contact = () => {
   const [form, setForm] = useState(initialState);
+    const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [submittedName, setSubmittedName] = useState({ first: '', last: '' });
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState('');
 
   const validate = () => {
     const errs = {};
@@ -29,14 +36,45 @@ const Contact = () => {
     setErrors({ ...errors, [e.target.name]: undefined });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
-    if (Object.keys(errs).length === 0) {
+    if (Object.keys(errs).length !== 0) return;
+
+    setLoading(true);
+    setApiError('');
+    try {
+      const payload = {
+        firstName: form.firstName,
+        lastName: form.lastName,
+        email: form.email,
+        phoneNumber: `${form.countryCode}${form.phone}`,
+        message: form.message,
+      };
+      const url = `${API_BASE_URL}/api/contact`;
+      console.log('[Contact] API URL:', url);
+      console.log('[Contact] Payload:', payload);
+
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      console.log('[Contact] Response status:', res.status, res.statusText);
+      const data = await res.json().catch(() => null);
+      console.log('[Contact] Response body:', data);
+
+      if (!res.ok) throw new Error(data?.message || `Server error (${res.status}). Please try again.`);
+      setSubmittedName({ first: form.firstName, last: form.lastName });
       setSubmitted(true);
       setForm(initialState);
-      setTimeout(() => setSubmitted(false), 3500);
+    } catch (err) {
+      console.error('[Contact] API error:', err);
+      setApiError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -150,12 +188,34 @@ const Contact = () => {
                   {errors.message && <span className={styles.errorMsg}>{errors.message}</span>}
                 </div>
 
-                <button type="submit" className={styles.submitBtn}>Send Message</button>
-                {submitted && <div className={styles.successMsg}>✓ Thank you! We'll get back to you soon.</div>}
+                <button type="submit" className={styles.submitBtn} disabled={loading}>
+                  {loading ? 'Sending…' : 'Send Message'}
+                </button>
+                {apiError && <div className={styles.errorMsg}>{apiError}</div>}
               </form>
             </div>
         </motion.div>
       </div>
+      {submitted && (
+        <div className={styles.modalOverlay} onClick={() => setSubmitted(false)}>
+          <motion.div
+            className={styles.modal}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.35 }}
+            onClick={e => e.stopPropagation()}
+          >
+            <div className={styles.modalIcon}>✓</div>
+            <h2 className={styles.modalTitle}>
+              Hey {submittedName.first} {submittedName.last}!
+            </h2>
+            <p className={styles.modalMsg}>
+              Your query has been received. We'll get back to you soon.
+            </p>
+            <button className={styles.modalBtn} onClick={() => { setSubmitted(false); navigate('/'); }}>Got it</button>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };
